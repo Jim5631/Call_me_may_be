@@ -1,0 +1,26 @@
+[project]
+name = "Call_me_may_be"
+version = "0.1.0"
+description = "Translate natural language into function calls"
+requires-python = ">=3.10"
+dependencies = [
+    "pydantic>=2.13.4",
+    "numpy>=1.25.0,<3.0.0",
+    "requests>=2.34.2",
+    "llm-sdk",
+]
+[tool.uv.sources]
+llm-sdk = {workspace = true}
+
+[tool.uv.workspace]
+members = ["llm_sdk"] 
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/Call_me_may_be"]
+
+[tool.mypy]
+disable_error_code = ["attr-defined"]
