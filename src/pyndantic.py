@@ -1,7 +1,6 @@
 """Pydantic models and JSON loading helpers."""
 import json
 from typing import Any
-
 from pydantic import BaseModel
 
 

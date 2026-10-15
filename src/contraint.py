@@ -1,4 +1,8 @@
-from llm_sdk import Small_LLM_Model
+try:
+    import sys
+    from llm_sdk import Small_LLM_Model
+except BaseException:
+    sys.exit(1)
 
 
 def constrain_function_selection(

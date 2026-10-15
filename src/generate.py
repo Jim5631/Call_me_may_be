@@ -1,6 +1,9 @@
 from typing import Any, Callable
-
-from llm_sdk import Small_LLM_Model
+try:
+    import sys
+    from llm_sdk import Small_LLM_Model
+except BaseException:
+    sys.exit(1)
 
 from .pyndantic import Function
 
@@ -34,7 +37,8 @@ def generate_value(
     function: TokenRule,
 ) -> tuple[str, list[int]]:
     text = ""
-    for _ in range(30):
+    max_len = 30
+    for _ in range(max_len):
         log = model.get_logits_from_input_ids(ids)
         masked_logits = [float("-inf")] * len(log)
         for token_id, token_text in id_tok.items():

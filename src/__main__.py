@@ -4,7 +4,10 @@ import json
 import os
 import sys
 
-from llm_sdk import Small_LLM_Model
+try:
+    from llm_sdk import Small_LLM_Model
+except BaseException:
+    sys.exit(1)
 from .contraint import constrain_function_selection
 from .generate import parameter_for_function
 from .pyndantic import Function, InputModel, OutputModel, load
@@ -127,4 +130,7 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except BaseException as e:
+        print(e)
